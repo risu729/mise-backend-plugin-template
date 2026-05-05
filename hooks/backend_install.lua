@@ -56,7 +56,6 @@ function PLUGIN:BackendInstall(ctx)
 
     -- Extract the archive
     cmd.exec("cd " .. install_path .. " && tar -xzf " .. temp_file)
-    cmd.exec("rm " .. temp_file)
 
     -- Set executable permissions
     cmd.exec("chmod +x " .. install_path .. "/bin/" .. tool)

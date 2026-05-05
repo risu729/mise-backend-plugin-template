@@ -280,7 +280,6 @@ function PLUGIN:BackendInstall(ctx)
     http.download_file({url = url}, temp_file)
 
     cmd.exec("cd " .. ctx.install_path .. " && tar -xzf " .. temp_file)
-    cmd.exec("rm " .. temp_file)
     return {}
 end
 ```
