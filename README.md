@@ -297,13 +297,21 @@ end
 | `ctx.tool` | string | Tool name | `"prettier"` |
 | `ctx.options` | table | Plugin options from `mise.toml` | `{}` |
 
-### BackendInstall and BackendExecEnv Context  
+### BackendInstall Context
 | Variable | Type | Description | Example |
 |----------|------|-------------|---------|
 | `ctx.tool` | string | Tool name | `"prettier"` |
 | `ctx.version` | string | Tool version | `"3.0.0"` |
 | `ctx.install_path` | string | Installation directory | `"/home/user/.local/share/mise/installs/npm/prettier/3.0.0"` |
-| `ctx.download_path` | string | Download cache directory (BackendInstall only) | `"/home/user/.local/share/mise/downloads/npm/prettier/3.0.0"` |
+| `ctx.download_path` | string | Download cache directory | `"/home/user/.local/share/mise/downloads/npm/prettier/3.0.0"` |
+| `ctx.options` | table | Plugin options from `mise.toml` | `{}` |
+
+### BackendExecEnv Context
+| Variable | Type | Description | Example |
+|----------|------|-------------|---------|
+| `ctx.tool` | string | Tool name | `"prettier"` |
+| `ctx.version` | string | Tool version | `"3.0.0"` |
+| `ctx.install_path` | string | Installation directory | `"/home/user/.local/share/mise/installs/npm/prettier/3.0.0"` |
 | `ctx.options` | table | Plugin options from `mise.toml` | `{}` |
 
 ### Available Lua Modules
