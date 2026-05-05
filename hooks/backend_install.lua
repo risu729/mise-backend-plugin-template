@@ -41,6 +41,7 @@ function PLUGIN:BackendInstall(ctx)
     --[[
     local http = require("http")
     local file = require("file")
+    local archiver = require("archiver")
 
     -- Construct download URL (adjust based on your backend's URL pattern)
     local platform = RUNTIME.osType:lower()
@@ -48,14 +49,13 @@ function PLUGIN:BackendInstall(ctx)
     local download_url = "https://releases.<BACKEND>.org/" .. tool .. "/" .. version .. "/" .. tool .. "-" .. platform .. "-" .. arch .. ".tar.gz"
 
     -- Download the tool
-    cmd.exec("mkdir -p " .. download_path)
     local temp_file = file.join_path(download_path, tool .. ".tar.gz")
     http.download_file({
         url = download_url
     }, temp_file)
 
     -- Extract the archive
-    cmd.exec("cd " .. install_path .. " && tar -xzf " .. temp_file)
+    archiver.decompress(temp_file, install_path)
 
     -- Set executable permissions
     cmd.exec("chmod +x " .. install_path .. "/bin/" .. tool)

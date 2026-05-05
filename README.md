@@ -274,12 +274,11 @@ function PLUGIN:BackendInstall(ctx)
     
     local http = require("http")
     local file = require("file")
-    local cmd = require("cmd")
-    cmd.exec("mkdir -p " .. ctx.download_path)
+    local archiver = require("archiver")
     local temp_file = file.join_path(ctx.download_path, "tool.tar.gz")
     http.download_file({url = url}, temp_file)
 
-    cmd.exec("cd " .. ctx.install_path .. " && tar -xzf " .. temp_file)
+    archiver.decompress(temp_file, ctx.install_path)
     return {}
 end
 ```
@@ -322,6 +321,7 @@ Backend plugins have access to these built-in modules:
 - `http` - HTTP client for downloads and API calls  
 - `json` - JSON parsing and encoding
 - `file` - File system operations
+- `archiver` - Archive extraction
 
 ## Publishing
 
